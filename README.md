@@ -1,2 +1,8 @@
-# RDBMS-Practice
-RDBMS Practice
+# 프로젝트형 AI 개발 6회차
+
+**RDBMS class**
+
+데이터베이스 실습
+
+---
++ 실습1
