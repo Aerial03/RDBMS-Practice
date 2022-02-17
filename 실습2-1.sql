@@ -1,34 +1,36 @@
--- 10π¯
-SELECT  DEPARTMENT_NO «–∞˙π¯»£,
-        COUNT(*) "«–ª˝ºˆ(∏Ì)"
+-- 10Î≤à
+SELECT  DEPARTMENT_NO ÌïôÍ≥ºÎ≤àÌò∏,
+        COUNT(*) "ÌïôÏÉùÏàò(Î™Ö)"
 FROM    TB_STUDENT
 GROUP BY    DEPARTMENT_NO
 ORDER BY    1;
 
--- 12π¯
-SELECT  SUBSTR(TERM_NO, 1, 4) ≥‚µµ,
-        ROUND(AVG(POINT),1) "≥‚µµ ∫∞ ∆Ú¡°"
+-- 12Î≤à
+SELECT  SUBSTR(TERM_NO, 1, 4) ÎÖÑÎèÑ,
+        ROUND(AVG(POINT),1) "ÎÖÑÎèÑ Î≥Ñ ÌèâÏ†ê"
 FROM    TB_GRADE
 WHERE   STUDENT_NO = 'A112113'
 GROUP BY    SUBSTR(TERM_NO, 1, 4);
 
--- 13π¯§§
-SELECT  DEPARTMENT_NO «–∞˙ƒ⁄µÂ∏Ì,
-        COUNT(ABSENCE_YN) "»ﬁ«–ª˝ ºˆ"
+-- 13Î≤à(Ìï¥Í≤∞)
+SELECT  DEPARTMENT_NO ÌïôÍ≥ºÏΩîÎìúÎ™Ö,
+        SUM(CASE WHEN ABSENCE_YN ='Y' THEN 1 
+			     ELSE 0 END) AS "Ìú¥ÌïôÏÉù Ïàò"
 FROM    TB_STUDENT
 GROUP BY    DEPARTMENT_NO
 ORDER BY    DEPARTMENT_NO;
 
--- 14π¯§§
-SELECT  STUDENT_NAME µø¿œ¿Ã∏ß,
-        COUNT(STUDENT_NAME = STUDENT_NAME) "µø∏Ì¿Œ ºˆ"
+-- 14Î≤à(Ìï¥Í≤∞)
+SELECT  STUDENT_NAME ÎèôÏùºÏù¥Î¶Ñ,
+        COUNT(*) "ÎèôÎ™ÖÏù∏ Ïàò"
 FROM    TB_STUDENT
-GROUP BY    STUDENT_NAME, COUNT(STUDENT_NAME = STUDENT_NAME);
+GROUP BY    STUDENT_NAME
+HAVING  COUNT(*) > 1;
 
--- 15π¯
-SELECT  SUBSTR(TERM_NO, 1, 4) ≥‚µµ,
-        SUBSTR(TERM_NO, 5, 2) «–±‚,
-        ROUND(AVG(POINT),1) ∆Ú¡°
+-- 15Î≤à
+SELECT  SUBSTR(TERM_NO, 1, 4) ÎÖÑÎèÑ,
+        SUBSTR(TERM_NO, 5, 2) ÌïôÍ∏∞,
+        ROUND(AVG(POINT),1) ÌèâÏ†ê
 FROM    TB_GRADE
 WHERE   STUDENT_NO = 'A112113'
 GROUP BY    ROLLUP(SUBSTR(TERM_NO, 1, 4), SUBSTR(TERM_NO, 5, 2));
